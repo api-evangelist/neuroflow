@@ -1,0 +1,81 @@
+generated: '2026-08-04'
+method: searched
+source: https://status.neuroflowlive.com/
+name: NeuroFlow Live — API lifecycle posture
+
+status_page:
+  present: true
+  url: https://status.neuroflowlive.com/
+  vendor: Atlassian Statuspage
+  page_id: pmy6y73cc6fz
+  page_name: NeuroFlow Live
+  time_zone: America/New_York
+  machine_readable:
+  - url: https://status.neuroflowlive.com/api/v2/summary.json
+    http_status: 200
+  - url: https://status.neuroflowlive.com/api/v2/incidents.json
+    http_status: 200
+  - url: https://status.neuroflowlive.com/history.atom
+    note: incident history feed advertised on the page
+  aliases:
+  - url: https://status.neuroflow.com/
+    http_status: 200
+    note: resolves to the same Statuspage page
+  components:
+  - name: Web App
+    description: NeuroFlow Live
+  - name: Mobile Apps
+    description: Android & iOS applications
+  - name: API
+    description: API Servers
+  - name: Integrations
+  - name: Xealth
+    description: Backend integration with Xealth
+  incident_history:
+    published: true
+    incidents_recorded: 11
+    most_recent:
+      date: '2026-02-10'
+      name: AWS Outage
+      impact: major
+
+versioning:
+  scheme_observed: path
+  evidence: >-
+    The NeuroFlow Live single-page application calls versioned routes under
+    /api/v2/ on its own origin. No published versioning policy was found.
+  policy_published: false
+  policy_url: null
+
+deprecation:
+  policy_published: false
+  sunset_header_observed: null
+  note: >-
+    No deprecation or sunset policy is published on any public NeuroFlow surface.
+    Because the API contract itself is customer-only (401 on /api/swagger.json),
+    deprecated operations cannot be derived from a spec.
+
+sla:
+  published: false
+  note: >-
+    No public SLA or uptime commitment was found. Statuspage records component
+    status but does not publish an uptime-percentage commitment for this page.
+
+changelog:
+  published: false
+  note: >-
+    No dated product or API changelog was reachable. The Statuspage incident
+    history is an availability log, not a change log, so no ChangeLog pointer
+    is emitted.
+
+x-evidence:
+  fetched: '2026-08-04'
+  probes:
+  - url: https://status.neuroflowlive.com/
+    http_status: 200
+  - url: https://status.neuroflowlive.com/api/v2/summary.json
+    http_status: 200
+  - url: https://status.neuroflow.com/
+    http_status: 200
+  - url: https://neuroflowlive.com/api/swagger.json
+    http_status: 401

@@ -1,0 +1,159 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  NeuroFlow's own announcement and legal pages (indexed and readable via search;
+  direct fetch of www.neuroflow.com is answered by a SiteGround bot-challenge
+  interstitial, HTTP 202), plus the NeuroFlow Live application's own assets.
+name: NeuroFlow — standards, regulatory and compliance conformance
+
+summary: >-
+  NeuroFlow is a HIPAA-covered behavioral health platform. Its published posture
+  is regulatory and certification-based (HIPAA/BAA, HITRUST i1, SOC 2), not
+  API-standards based: no OpenAPI, AsyncAPI, GraphQL SDL, FHIR capability
+  statement, OAuth/OIDC metadata or RFC 9457 problem envelope is reachable
+  anonymously, so every API-standards row below is recorded as not-evidenced
+  rather than as a failure to comply.
+
+conformance:
+
+- id: hipaa
+  name: HIPAA (US Health Insurance Portability and Accountability Act)
+  conforms: true
+  evidence:
+    type: published-agreement
+    detail: >-
+      NeuroFlow publishes a Business Associate Agreement (BAA) as a downloadable
+      PDF from its own marketing CDN, and the platform is marketed to covered
+      entities (health systems, payers, federal health agencies) for handling PHI.
+    url: https://f.hubspotusercontent20.net/hubfs/5158979/NeuroFlow%20BAA.pdf
+    http_status: 200
+
+- id: hitrust-i1
+  name: HITRUST Implemented, 1-year (i1) Certification
+  conforms: true
+  evidence:
+    type: vendor-announcement
+    detail: >-
+      NeuroFlow announced HITRUST Implemented (i1) certification in September 2022,
+      covering both the Engage (patient) and Manage (care team) parts of the
+      platform. Certification currency beyond the announcement is not published.
+    url: https://www.neuroflow.com/neuroflow-technology-achieves-hitrust-certification/
+    http_status: 202
+    note: page indexed and readable via search; direct fetch answered by bot challenge
+
+- id: soc2
+  name: SOC 2 (AICPA Trust Services Criteria)
+  conforms: true
+  evidence:
+    type: vendor-announcement
+    detail: >-
+      NeuroFlow announced completion of a SOC 2 security examination performed by
+      A-LIGN, re-assessed annually. The report itself is available to current or
+      prospective customers only, under NDA — it is not a public artifact.
+    url: https://www.neuroflow.com/neuroflow-completes-soc-2-security-examination/
+    http_status: 202
+    report_public: false
+
+- id: gdpr-subprocessors
+  name: Published subprocessor list
+  conforms: true
+  evidence:
+    type: published-page
+    detail: >-
+      NeuroFlow maintains a public subprocessor list (last revised 2025-11-13),
+      the disclosure practice associated with GDPR/DPA-style data-processing terms.
+    url: https://www.neuroflow.com/subprocessors/
+    http_status: 202
+
+- id: openapi
+  name: OpenAPI / Swagger contract published
+  conforms: false
+  evidence:
+    type: probe
+    detail: >-
+      A Swagger document is served by the application backend at /api/swagger.json
+      on production, sandbox, QA, staging and dev, but every anonymous request
+      returns HTTP 401 {"message": "Please log in to continue", "code": 0}. All
+      docs-host spec paths (/openapi.json, /openapi.yaml, /swagger.json, /api-docs,
+      /redoc) return the single-page-app HTML shell, not a spec.
+    url: https://neuroflowlive.com/api/swagger.json
+    http_status: 401
+
+- id: fhir
+  name: HL7 FHIR
+  conforms: null
+  evidence:
+    type: not-evidenced
+    detail: >-
+      NeuroFlow integrates with Epic (App Orchard / Epic Showroom, announced 2020)
+      and with Xealth, and the application's own Content-Security-Policy names
+      appmarket.epic.com, vendorservices.epic.com, *.xealth.io and *.mynovant.org
+      as permitted frame ancestors — an EHR-embedded deployment model. No FHIR
+      capability statement, FHIR base URL, or explicit FHIR/SMART-on-FHIR claim
+      was found on any public NeuroFlow surface, so FHIR conformance is recorded
+      as unknown rather than asserted.
+    url: https://neuroflowlive.com/api/swagger.json
+    http_status: 401
+
+- id: oauth2
+  name: OAuth 2.0 / OpenID Connect
+  conforms: null
+  evidence:
+    type: probe
+    detail: >-
+      /.well-known/oauth-authorization-server, /.well-known/oauth-protected-resource
+      and /.well-known/openid-configuration all return the SPA HTML shell on
+      neuroflowlive.com. The observed API auth is an opaque session cookie
+      (Set-Cookie session=..., login-expires response header), not a bearer token
+      flow. No public OAuth documentation exists.
+    url: https://neuroflowlive.com/.well-known/openid-configuration
+    http_status: 200
+    note: 200 but text/html SPA catch-all — not an authorization-server metadata document
+
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence:
+    type: probe
+    detail: >-
+      The observed error envelope is a bespoke JSON object,
+      {"message": "...", "code": 0}, served as application/json — not
+      application/problem+json and not RFC 9457 shaped.
+    url: https://neuroflowlive.com/api/swagger.json
+    http_status: 401
+
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence:
+    type: probe
+    detail: >-
+      /.well-known/security.txt returns the SiteGround bot-challenge interstitial
+      on www.neuroflow.com and the SPA HTML shell on neuroflowlive.com. No
+      security.txt is served from either host.
+    url: https://neuroflowlive.com/.well-known/security.txt
+    http_status: 200
+    note: 200 but text/html SPA catch-all
+
+certifications:
+- name: HITRUST i1 Certification
+  awarded: '2022-09'
+  scope: NeuroFlow Engage and NeuroFlow Manage
+- name: SOC 2
+  auditor: A-LIGN
+  cadence: annual re-assessment
+  availability: customer/prospect under NDA
+
+x-evidence:
+  fetched: '2026-08-04'
+  probes:
+  - url: https://f.hubspotusercontent20.net/hubfs/5158979/NeuroFlow%20BAA.pdf
+    http_status: 200
+  - url: https://www.neuroflow.com/neuroflow-technology-achieves-hitrust-certification/
+    http_status: 202
+  - url: https://www.neuroflow.com/neuroflow-completes-soc-2-security-examination/
+    http_status: 202
+  - url: https://neuroflowlive.com/api/swagger.json
+    http_status: 401
+  - url: https://neuroflowlive.com/.well-known/security.txt
+    http_status: 200

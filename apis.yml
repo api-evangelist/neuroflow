@@ -1,7 +1,17 @@
 aid: neuroflow
 name: NeuroFlow
-description: 'NeuroFlow is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'NeuroFlow is a Philadelphia-based behavioral health technology company
+  that gives payers, health systems, provider groups and federal agencies the infrastructure
+  to identify and manage behavioral health risk at scale. Its IntegrateBH platform
+  pairs patient-facing mobile and web applications with measurement-based care and
+  screening workflows, clinical dashboards, care-coordination tooling and population-level
+  behavioral health analytics. The platform reaches customers through EHR and partner
+  integrations — including Epic (App Orchard / Epic Showroom) and the Xealth digital-health
+  ecosystem — over a session-authenticated REST API served from neuroflowlive.com/api/.
+  NeuroFlow publishes no public developer portal: a Swagger document exists at /api/swagger.json
+  on every environment, but it returns HTTP 401 "Please log in to continue" to anonymous
+  callers, so the contract is customer-only.'
+image: https://neuroflowlive.com/static/img/onward-favicon.DQ5xHIN6.png
 url: https://raw.githubusercontent.com/api-evangelist/neuroflow/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,12 +22,96 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Behavioral Health
+- Health Care
+- Mental Health
+- Digital Health
+- Care Coordination
+- Health Analytics
+- EHR Integration
+apis:
+- aid: neuroflow:neuroflow-live-api
+  name: NeuroFlow Live API
+  description: 'The REST API behind the NeuroFlow Live web and mobile applications,
+    served same-origin from https://neuroflowlive.com/api/ (server: gunicorn, versioned
+    /api/v2/ routes). A Swagger document is published by the service at /api/swagger.json
+    but is session-gated: anonymous requests return HTTP 401 with the JSON envelope
+    {"message": "Please log in to continue", "code": 0}. The same route and the same
+    401 were observed on the sandbox, QA, staging and dev environments, so no public
+    machine-readable contract is reachable.'
+  humanURL: https://www.neuroflow.com/integratebh/
+  baseURL: https://neuroflowlive.com/api/
+  tags:
+  - Behavioral Health
+  - Health Care
+  - Mental Health
+  x-evidence:
+    fetched: '2026-08-04'
+    probes:
+    - url: https://neuroflowlive.com/api/swagger.json
+      http_status: 401
+      content_type: application/json
+      note: real backend route (server gunicorn); auth-gated Swagger document
+    - url: https://sandbox.neuroflow.io/api/swagger.json
+      http_status: 401
+      content_type: application/json
+    - url: https://stg.neuroflow.io/api/swagger.json
+      http_status: 401
+      content_type: application/json
+    - url: https://neuroflowlive.com/openapi.json
+      http_status: 200
+      content_type: text/html
+      note: single-page-app catch-all, not a spec
+  properties: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/neuroflow-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/neuroflow_stock/
+  url: https://www.neuroflow.com/
+- type: Blog
+  url: https://www.neuroflow.com/blog/
+- type: Support
+  url: https://neuroflow.zendesk.com/hc/en-us
+- type: Login
+  url: https://neuroflowlive.com/login
+- type: PrivacyPolicy
+  url: https://www.neuroflow.com/privacy-policy/
+- type: TermsOfService
+  url: https://www.neuroflow.com/terms-of-use/
+- type: StatusPage
+  url: https://status.neuroflowlive.com/
+- type: Lifecycle
+  url: lifecycle/neuroflow-lifecycle.yml
+- type: Conformance
+  url: conformance/neuroflow-conformance.yml
+- type: Compliance
+  url: conformance/neuroflow-conformance.yml
+- type: LLMsTxt
+  url: llms/neuroflow-llms.txt
+x-enrichment:
+  date: '2026-08-04'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    NeuroFlow's application backend does publish a Swagger document at
+    /api/swagger.json, but it answers anonymous callers with HTTP 401
+    {"message": "Please log in to continue", "code": 0} on production, sandbox,
+    QA, staging and dev alike, and there is no public developer portal anywhere
+    to read it from.
+  evidence:
+  - url: https://neuroflowlive.com/api/swagger.json
+    status: 401
+  - url: https://sandbox.neuroflow.io/api/swagger.json
+    status: 401
+  - url: https://neuroflowlive.com/openapi.json
+    status: 200
+  checked: '2026-08-04'
