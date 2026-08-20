@@ -23,6 +23,15 @@ modified: '2026-08-04'
 tags:
 - Company
 - Behavioral Health
+- Healthcare
+- Mental Health
+- Digital Health
+- Care Coordination
+- Health Analytics
+- EHR Integration
+tags_raw:
+- Company
+- Behavioral Health
 - Health Care
 - Mental Health
 - Digital Health
@@ -42,6 +51,10 @@ apis:
   humanURL: https://www.neuroflow.com/integratebh/
   baseURL: https://neuroflowlive.com/api/
   tags:
+  - Behavioral Health
+  - Healthcare
+  - Mental Health
+  tags_raw:
   - Behavioral Health
   - Health Care
   - Mental Health
