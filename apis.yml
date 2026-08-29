@@ -11,6 +11,17 @@ description: 'NeuroFlow is a Philadelphia-based behavioral health technology com
   NeuroFlow publishes no public developer portal: a Swagger document exists at /api/swagger.json
   on every environment, but it returns HTTP 401 "Please log in to continue" to anonymous
   callers, so the contract is customer-only.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://neuroflowlive.com/static/img/onward-favicon.DQ5xHIN6.png
 url: https://raw.githubusercontent.com/api-evangelist/neuroflow/refs/heads/main/apis.yml
 x-type: company
