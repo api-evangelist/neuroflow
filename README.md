@@ -64,5 +64,88 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-NeuroFlow is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/neuroflow_stock/
+NeuroFlow is a Philadelphia-based behavioral health technology company that gives payers, health systems, provider groups and federal agencies the infrastructure to identify and manage behavioral health risk at scale. Its IntegrateBH platform pairs patient-facing mobile and web applications with measurement-based care and screening workflows, clinical dashboards, care-coordination tooling and population-level behavioral health analytics. The platform reaches customers through EHR and partner integrations — including Epic (App Orchard / Epic Showroom) and the Xealth digital-health ecosystem — over a session-authenticated REST API served from neuroflowlive.com/api/. NeuroFlow publishes no public developer portal: a Swagger document exists at /api/swagger.json on every environment, but it returns HTTP 401 "Please log in to continue" to anonymous callers, so the contract is customer-only.
+
+**Areas:** Company · Behavioral Health · Healthcare · Mental Health · Digital Health · Care Coordination · Health Analytics · EHR Integration
+
+## NeuroFlow on APIs.io
+
+Everything profiled for NeuroFlow is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/neuroflow/](https://apis.io/providers/neuroflow/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [NeuroFlow Live API](https://apis.io/apis/neuroflow/neuroflow-live-api/) — The REST API behind the NeuroFlow Live web and mobile applications, served same-origin from https://neuroflowlive.com/api/ (server: gunicorn, versioned…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Neuroflow Domain Security](https://apis.io/security/neuroflow/neuroflow-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.neuroflow.com/)
+- [Support](https://neuroflow.zendesk.com/hc/en-us)
+- [Blog](https://www.neuroflow.com/blog/)
+- [Terms of service](https://www.neuroflow.com/terms-of-use/)
+- [Privacy policy](https://www.neuroflow.com/privacy-policy/)
+- [Status](https://status.neuroflowlive.com/)
+
+## API Evangelist rating
+
+**Kin Score 16.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 4.8 |
+| Access clarity | 14.5 |
+
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 17.2** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/neuroflow/](https://apis.io/providers/neuroflow/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NeuroFlow: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/neuroflow/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
